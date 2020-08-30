@@ -1,19 +1,11 @@
-import Link from "next/link";
 import Head from "../components/head";
+import Header from "../components/molecules/header";
+import Footer from "../components/molecules/footer";
 
 const Top = () => (
   <div>
     <Head />
-    <h2>
-      <Link href="/about/">
-        <a>About Me</a>
-      </Link>
-    </h2>
-    <h2>
-      <Link href="/contact/form">
-        <a>Contact</a>
-      </Link>
-    </h2>
+    <Header />
     <div className="p-4 bg-white rounded shadow">
       <h1 className="text-2xl font-bold">Next.js</h1>
       <p className="text-gray-500">
@@ -21,6 +13,7 @@ const Top = () => (
         for production builds.
       </p>
     </div>
+    <Footer />
   </div>
 );
 
