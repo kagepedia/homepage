@@ -1,12 +1,19 @@
-// import Link from "next/link";
-// import Head from "../components/head";
-// import Nav from "../components/nav";
+import Link from "next/link";
+import Head from "../components/head";
 
-import Head from "next/head";
-
-export default () => (
+const Top = () => (
   <div>
     <Head />
+    <h2>
+      <Link href="/about/">
+        <a>About Me</a>
+      </Link>
+    </h2>
+    <h2>
+      <Link href="/contact/form">
+        <a>Contact</a>
+      </Link>
+    </h2>
     <div className="p-4 bg-white rounded shadow">
       <h1 className="text-2xl font-bold">Next.js</h1>
       <p className="text-gray-500">
@@ -16,3 +23,5 @@ export default () => (
     </div>
   </div>
 );
+
+export default Top;
