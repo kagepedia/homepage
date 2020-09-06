@@ -9,7 +9,13 @@ const About = () => (
     <div className="about-page">
       <div className="p-4 bg-white rounded shadow">
         <h1 className="text-2xl font-bold text-center">About Me</h1>
-        <img src="/assets/img/profile.JPG"></img>
+        <div className="flex flex-wrap justify-center my-6">
+          <img
+            className="rounded-full border-solid border-4 border-green-600"
+            src="/img/profile.JPG"
+            alt="プロフィール画像"
+          ></img>
+        </div>
         <p className="text-gray-500 text-center">
           WEB制作会社でプログラマーをやっている24歳です。
           <br />
@@ -17,11 +23,10 @@ const About = () => (
           <br />
           趣味は、旅行・写真・ゲームです。
         </p>
-        <p className="test">test</p>
       </div>
       <style jsx>{`
-        .test {
-          color: red;
+        img {
+          text-align: center;
         }
       `}</style>
     </div>
