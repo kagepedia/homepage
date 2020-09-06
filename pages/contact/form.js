@@ -1,8 +1,11 @@
 import Head from "../../components/head";
+import Header from "../../components/molecules/header";
+import Footer from "../../components/molecules/footer";
 
 const Form = () => (
   <div>
     <Head />
+    <Header />
     <div className="p-4 bg-white rounded shadow">
       <h1 className="text-2xl font-bold">Form</h1>
       <p className="text-gray-500">
@@ -10,6 +13,7 @@ const Form = () => (
         for production builds.
       </p>
     </div>
+    <Footer />
   </div>
 );
 

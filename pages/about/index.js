@@ -1,5 +1,6 @@
 import Head from "../../components/head";
 import Header from "../../components/molecules/header";
+import Footer from "../../components/molecules/footer";
 
 const About = () => (
   <div>
@@ -24,6 +25,7 @@ const About = () => (
         }
       `}</style>
     </div>
+    <Footer />
   </div>
 );
 

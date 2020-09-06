@@ -1,8 +1,12 @@
 import Head from "../../components/head";
+import Header from "../../components/molecules/header";
+import Footer from "../../components/molecules/footer";
+import PostDtail from "../../components/atom/PostDetail";
 
 const Detail = () => (
   <div>
     <Head />
+    <Header />
     <div className="p-4 bg-white rounded shadow">
       <h1 className="text-2xl font-bold">Detail</h1>
       <p className="text-gray-500">
@@ -10,6 +14,8 @@ const Detail = () => (
         for production builds.
       </p>
     </div>
+    <PostDtail />
+    <Footer />
   </div>
 );
 
