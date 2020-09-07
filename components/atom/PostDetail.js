@@ -1,13 +1,35 @@
-const PostDetail = () => (
+// markdown-it-plugin
+const md = require("markdown-it")({
+  // breaks: true,
+  html: true,
+  linkify: true,
+  typography: true,
+})
+  .use(require("markdown-it-emoji"))
+  .use(require("markdown-it-sup"))
+  .use(require("markdown-it-sub"))
+  .use(require("markdown-it-ins"))
+  .use(require("markdown-it-mark"))
+  .use(require("markdown-it-footnote"))
+  .use(require("markdown-it-deflist"))
+  .use(require("markdown-it-abbr"))
+  .use(require("markdown-it-container"), "info")
+  .use(require("markdown-it-container"), "success")
+  .use(require("markdown-it-container"), "warning")
+  .use(require("markdown-it-container"), "danger")
+  .use(require("markdown-it-highlightjs"))
+  .use(require("markdown-it-katex"));
+// markdown-it-plugin
+
+const PostDetail = ({ title, publishDate, discription, body }) => (
   <div>
-    <h2 className="ttl">サンプルタイトル</h2>
-    <p className="postdate">投稿日時：2020年03月01日</p>
-    <p className="update">更新日時：2020年03月09日</p>
-    <p className="descript">description</p>
-    <div className="myCtfCms">
-      <pre>aaaaa</pre>
-      <code>aaaaaa</code>
-    </div>
+    <h2 className="ttl">{title}</h2>
+    <p className="postdate">投稿日時：{publishDate}</p>
+    <p className="descript">{discription}</p>
+    <div
+      className="myCtfCms"
+      dangerouslySetInnerHTML={{ __html: md.render(body) }}
+    ></div>
   </div>
 );
 
