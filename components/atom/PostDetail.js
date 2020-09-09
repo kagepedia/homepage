@@ -22,12 +22,12 @@ const md = require("markdown-it")({
 // markdown-it-plugin
 
 const PostDetail = ({ title, publishDate, discription, body }) => (
-  <div>
+  <div className="bg-white rounded-b p-4 flex flex-col justify-between leading-normal">
     <h2 className="ttl">{title}</h2>
     <p className="postdate">投稿日時：{publishDate}</p>
     <p className="descript">{discription}</p>
     <div
-      className="myCtfCms"
+      className="markdown mt-5 md:mx-6 lg:mx-48"
       dangerouslySetInnerHTML={{ __html: md.render(body) }}
     ></div>
   </div>

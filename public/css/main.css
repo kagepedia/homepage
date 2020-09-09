@@ -7,3 +7,6 @@ body {
 }
 
 @tailwind utilities;
+
+/* original utilities */
+@import "./posts/detail.css";

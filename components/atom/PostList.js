@@ -3,7 +3,7 @@ import Link from "next/link";
 // https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492__340.jpg
 
 const PostList = ({ title, publishDate, discription, slug }) => (
-  <div className="max-w-sm w-full lg:max-w-full lg:flex lg:flex-wrap lg:justify-center my-6">
+  <div className="my-6 md:mx-10 lg:mx-64">
     <Link href={"/posts/" + slug} as={"/posts/" + slug}>
       <a>
         <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
