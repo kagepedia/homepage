@@ -1,6 +1,7 @@
 import Head from "../../components/head";
 import Header from "../../components/molecules/header";
 import Footer from "../../components/molecules/footer";
+import Skills from "../../components/atom/Skills";
 
 const About = () => (
   <div>
@@ -23,6 +24,7 @@ const About = () => (
           <br />
           趣味は、旅行・写真・ゲームです。
         </p>
+        <Skills />
       </div>
       <style jsx>{`
         img {
