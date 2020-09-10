@@ -4,6 +4,7 @@ import Header from "../../components/molecules/header";
 import Footer from "../../components/molecules/footer";
 import PostDtail from "../../components/atom/PostDetail";
 import { formatDate } from "../../utils/date";
+import { noImage } from "../../utils/image";
 
 const client = require("contentful").createClient({
   space: process.env.CTF_SPACE_ID,
@@ -35,11 +36,10 @@ const Detail = ({ post }) => {
     <div>
       <Head />
       <Header />
-      <div className="p-4 bg-white rounded shadow">
-        <h1 className="text-2xl font-bold">Detail</h1>
-      </div>
       {post ? (
         <PostDtail
+          img_url={noImage(post).url}
+          img_alt={noImage(post).title}
           title={post.fields.title}
           publishDate={formatDate(post.fields.publishDate)}
           discription={post.fields.discription}
