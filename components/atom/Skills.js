@@ -1,42 +1,36 @@
-import { Bubble } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 
 const data = {
-  labels: ["January"],
+  labels: ["PHP", "Perl", "JavaScript", "Docker", "AWS"],
   datasets: [
     {
-      label: "My First dataset",
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: "rgba(75,192,192,0.4)",
-      borderColor: "rgba(75,192,192,1)",
-      borderCapStyle: "butt",
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: "miter",
-      pointBorderColor: "rgba(75,192,192,1)",
-      pointBackgroundColor: "#fff",
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: "rgba(75,192,192,1)",
-      pointHoverBorderColor: "rgba(220,220,220,1)",
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: [
-        { x: 5, y: 1, r: 3 },
-        { x: 10, y: 40, r: 3 },
-        { x: 10, y: 20, r: 5 },
-        { x: 15, y: 30, r: 10 },
-        { x: 20, y: 40, r: 5 },
+      data: [100, 100, 100, 100, 100],
+      backgroundColor: ["#FF6384", "#8A2BE2", "#FFCE56", "#36A2EB", "#FF7F50"],
+      hoverBackgroundColor: [
+        "#FF6384",
+        "#8A2BE2",
+        "#FFCE56",
+        "#36A2EB",
+        "#FF7F50",
       ],
     },
   ],
 };
 
 const Skills = () => (
-  <div>
-    <h2>Bubble Example</h2>
-    <Bubble data={data} width={400} height={200} />
+  <div className="my-6">
+    <h2 className="text-2xl font-bold text-center">Skill Set</h2>
+    <div className="">
+      <Doughnut
+        data={data}
+        width={400}
+        height={300}
+        options={{
+          responsive: true,
+          maintainAspectRatio: false,
+        }}
+      />
+    </div>
   </div>
 );
 
