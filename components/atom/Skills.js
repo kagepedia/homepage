@@ -1,18 +1,12 @@
-import { Doughnut } from "react-chartjs-2";
+import { Doughnut } from 'react-chartjs-2';
 
 const data = {
-  labels: ["PHP", "Perl", "JavaScript", "Docker", "AWS"],
+  labels: ['PHP', 'Perl', 'JavaScript', 'Docker', 'AWS'],
   datasets: [
     {
       data: [100, 100, 100, 100, 100],
-      backgroundColor: ["#FF6384", "#8A2BE2", "#FFCE56", "#36A2EB", "#FF7F50"],
-      hoverBackgroundColor: [
-        "#FF6384",
-        "#8A2BE2",
-        "#FFCE56",
-        "#36A2EB",
-        "#FF7F50",
-      ],
+      backgroundColor: ['#FF6384', '#8A2BE2', '#FFCE56', '#36A2EB', '#FF7F50'],
+      hoverBackgroundColor: ['#FF6384', '#8A2BE2', '#FFCE56', '#36A2EB', '#FF7F50'],
     },
   ],
 };

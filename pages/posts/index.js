@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import Head from "../../components/head";
-import Header from "../../components/molecules/header";
-import Footer from "../../components/molecules/footer";
-import PostList from "../../components/atom/PostList";
-import { formatDate } from "../../utils/date";
+import { useEffect, useState } from 'react';
+import Head from '../../components/head';
+import Header from '../../components/molecules/header';
+import Footer from '../../components/molecules/footer';
+import PostList from '../../components/atom/PostList';
+import { formatDate } from '../../utils/date';
 
-const client = require("contentful").createClient({
+const client = require('contentful').createClient({
   space: process.env.CTF_SPACE_ID,
   accessToken: process.env.CTF_CDA_ACCESS_TOKEN,
 });

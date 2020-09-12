@@ -1,12 +1,12 @@
-import { useRouter } from "next/router";
-import Head from "../../components/head";
-import Header from "../../components/molecules/header";
-import Footer from "../../components/molecules/footer";
-import PostDtail from "../../components/atom/PostDetail";
-import { formatDate } from "../../utils/date";
-import { noImage } from "../../utils/image";
+import { useRouter } from 'next/router';
+import Head from '../../components/head';
+import Header from '../../components/molecules/header';
+import Footer from '../../components/molecules/footer';
+import PostDtail from '../../components/atom/PostDetail';
+import { formatDate } from '../../utils/date';
+import { noImage } from '../../utils/image';
 
-const client = require("contentful").createClient({
+const client = require('contentful').createClient({
   space: process.env.CTF_SPACE_ID,
   accessToken: process.env.CTF_CDA_ACCESS_TOKEN,
 });
@@ -21,7 +21,7 @@ export async function getStaticProps({ params }) {
   const slug = params.slug;
   const entries = await client.getEntries({
     content_type: process.env.CTF_BLOG_POST_TYPE_ID,
-    "fields.slug": slug,
+    'fields.slug': slug,
   });
   const post = entries.items[0];
   return { props: { post } };

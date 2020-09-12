@@ -1,7 +1,7 @@
-import Head from "../../components/head";
-import Header from "../../components/molecules/header";
-import Footer from "../../components/molecules/footer";
-import Skills from "../../components/atom/Skills";
+import Head from '../../components/head';
+import Header from '../../components/molecules/header';
+import Footer from '../../components/molecules/footer';
+import Skills from '../../components/atom/Skills';
 
 const About = () => (
   <div>
