@@ -42,7 +42,7 @@ const Detail = ({ post }) => {
           publishDate={formatDate(post.fields.publishDate)}
           discription={post.fields.discription}
           body={post.fields.body}
-          key={post.fields.slug}
+          slug={post.fields.slug}
         />
       ) : null}
       <Footer />

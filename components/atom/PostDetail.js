@@ -23,10 +23,10 @@ const md = require('markdown-it')({
   .use(require('markdown-it-katex'));
 // markdown-it-plugin
 
-const PostDetail = ({ img_url, img_alt, title, publishDate, discription, body, key }) => (
+const PostDetail = ({ img_url, img_alt, title, publishDate, discription, body, slug }) => (
   <div>
     <div>
-      <Head title={title} url={'https://kagepedia.com/posts/' + key} />
+      <Head title={title} url={'https://kagepedia.com/posts/' + slug} />
     </div>
     <div className="bg-white rounded-b p-4 flex flex-col justify-between leading-normal">
       <h2 className="text-center">{title}</h2>
