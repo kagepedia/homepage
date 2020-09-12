@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import Head from '../../components/head';
 import Header from '../../components/molecules/header';
 import Footer from '../../components/molecules/footer';
 import PostDtail from '../../components/atom/PostDetail';
@@ -34,7 +33,6 @@ const Detail = ({ post }) => {
   }
   return (
     <div>
-      <Head />
       <Header />
       {post ? (
         <PostDtail

@@ -1,3 +1,5 @@
+import Head from '../../components/head';
+
 // markdown-it-plugin
 const md = require('markdown-it')({
   // breaks: true,
@@ -21,13 +23,18 @@ const md = require('markdown-it')({
   .use(require('markdown-it-katex'));
 // markdown-it-plugin
 
-const PostDetail = ({ img_url, img_alt, title, publishDate, discription, body }) => (
-  <div className="bg-white rounded-b p-4 flex flex-col justify-between leading-normal">
-    <h2 className="text-center">{title}</h2>
-    <p className="text-center">投稿日時：{publishDate}</p>
-    <img className="md:w-1/2 md:mx-auto my-4" src={img_url} alt={img_alt}></img>
-    <p className="whitespace-pre-line text-center">{discription}</p>
-    <div className="markdown mt-5 md:mx-6 lg:mx-48" dangerouslySetInnerHTML={{ __html: md.render(body) }}></div>
+const PostDetail = ({ img_url, img_alt, title, publishDate, discription, body, key }) => (
+  <div>
+    <div>
+      <Head title={title} url={'https://kagepedia.com/posts/' + key} />
+    </div>
+    <div className="bg-white rounded-b p-4 flex flex-col justify-between leading-normal">
+      <h2 className="text-center">{title}</h2>
+      <p className="text-center">投稿日時：{publishDate}</p>
+      <img className="md:w-1/2 md:mx-auto my-4" src={img_url} alt={img_alt}></img>
+      <p className="whitespace-pre-line text-center">{discription}</p>
+      <div className="markdown mt-5 md:mx-6 lg:mx-48" dangerouslySetInnerHTML={{ __html: md.render(body) }}></div>
+    </div>
   </div>
 );
 

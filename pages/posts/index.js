@@ -29,21 +29,13 @@ const Post = () => {
 
   return (
     <div>
-      <Head />
+      <Head title={'記事一覧'} url={'https://kagepedia.com/posts'} />
       <Header />
       <div className="p-4 bg-white rounded shadow">
         <h1 className="text-2xl font-bold text-center">Post</h1>
       </div>
       {posts.length > 0
-        ? posts.map((p) => (
-            <PostList
-              title={p.fields.title}
-              publishDate={formatDate(p.fields.publishDate)}
-              discription={p.fields.discription}
-              slug={p.fields.slug}
-              key={p.fields.slug}
-            />
-          ))
+        ? posts.map((p) => <PostList title={p.fields.title} publishDate={formatDate(p.fields.publishDate)} discription={p.fields.discription} slug={p.fields.slug} key={p.fields.slug} />)
         : null}
       <Footer />
     </div>
