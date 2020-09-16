@@ -1,20 +1,19 @@
+import fetch from 'node-fetch';
 import Head from '../../components/head';
 import Header from '../../components/molecules/header';
 import Footer from '../../components/molecules/footer';
 
 // SendGrid
-/*
 fetch('/api/sendmail', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    email: 'test@exsample.com',
-    message: 'Test mail.',
+    email: 'sample@gmail.com',
+    message: 'Test mail2.',
   }),
 });
-*/
 // SendGrid
 
 const Form = () => (

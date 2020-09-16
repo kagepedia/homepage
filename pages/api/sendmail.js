@@ -1,16 +1,14 @@
-// SendGrid
-/*
 const sgMail = require('@sendgrid/mail');
 
 export default async function (req, res) {
-  sgMail.setApiKey('SendGridで作成したAPIキー');
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   const { email, message } = req.body;
 
   const content = {
     to: email,
-    from: '任意のメールアドレス（実現するもの）',
-    subject: 'メールのタイトルです',
+    from: process.env.ADMIN_MAIL,
+    subject: 'メールのタイトルです2',
     text: message,
     html: `<p>${message}</p>`,
   };
@@ -23,5 +21,3 @@ export default async function (req, res) {
     res.status(400).send('Message not sent.');
   }
 }
-*/
-// SendGrid
