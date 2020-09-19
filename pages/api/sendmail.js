@@ -2,8 +2,8 @@ import { useRouter } from 'next/router';
 const sgMail = require('@sendgrid/mail');
 
 export default async function (req, res) {
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const router = useRouter();
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   const { name, email, contents } = req.body;
 
@@ -18,7 +18,7 @@ export default async function (req, res) {
   try {
     await sgMail.send(content);
     res.status(200).send('Message sent successfully.');
-    router.push('/contact/comp');
+    router.push('/contact/thanks');
   } catch (error) {
     res.status(400).send('Message not sent.');
     router.push('/contact/form');
