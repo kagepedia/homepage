@@ -3,6 +3,7 @@ import Head from '../../components/head';
 import Header from '../../components/molecules/header';
 import Footer from '../../components/molecules/footer';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const Form = () => {
   const [errors, setErrors] = useState({});
@@ -45,6 +46,7 @@ const Form = () => {
   };
 
   // SendGrid
+  const router = useRouter();
   const postData = (formDta) => {
     fetch('/api/sendmail', {
       method: 'POST',
@@ -52,6 +54,12 @@ const Form = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formDta),
+    }).then((res) => {
+      if (res.status === 200) {
+        router.push('/contact/thanks');
+      } else {
+        router.push('/contact/form');
+      }
     });
   };
 
