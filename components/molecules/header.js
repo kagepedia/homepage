@@ -1,40 +1,58 @@
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const Header = () => {
-  const [showNavbar, setShowNavbar] = useState(false);
+  const [showMenubar, setShowMenubar] = useState(false);
 
   return (
     <div>
-      <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
-        <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <a href="/">
-            <span className="font-semibold text-xl tracking-tight">Kagepedia</span>
+      <nav className="w-full py-4 bg-blue-800 shadow">
+        <div className="ml-6">
+          <div className="text-white">
+            <a className="" href="https://www.facebook.com/profile.php?id=100034531956446">
+              <FontAwesomeIcon icon={faFacebook} />
+            </a>
+            <a className="pl-6" href="https://www.instagram.com/k4gepedia/">
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
+            <a className="pl-6" href="https://twitter.com/Luvpys">
+              <FontAwesomeIcon icon={faTwitter} />
+            </a>
+            <a className="pl-6" href="https://www.linkedin.com/in/soichiro-kage/">
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+          </div>
+        </div>
+      </nav>
+      <header className="w-full container mx-auto">
+        <div className="flex flex-col items-center py-12">
+          <a className="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="/">
+            ひなたぼっこ
+          </a>
+          <p className="text-lg text-gray-600">エンジニアのための備忘録</p>
+        </div>
+      </header>
+      <nav className="w-full py-4 border-t border-b bg-gray-100">
+        <div className="block sm:hidden">
+          <a href="#" onClick={() => setShowMenubar(!showMenubar)} className="block md:hidden text-base font-bold uppercase text-center flex justify-center items-center">
+            Menu <span className="fas ml-2">{showMenubar ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}</span>
           </a>
         </div>
-        <div className="block lg:hidden">
-          <button
-            className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
-            onClick={() => setShowNavbar(!showNavbar)}
-          >
-            <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <title>Menu</title>
-              {showNavbar ? (
-                <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
-              ) : (
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-              )}
-            </svg>
-          </button>
-        </div>
-        <div className={'w-full block flex-grow-0 lg:flex lg:items-center lg:w-auto' + (showNavbar ? '' : ' hidden')}>
-          <div className="text-sm lg:flex-grow">
-            <a href="/posts/" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+        <div className={'w-full flex-grow sm:flex sm:items-center sm:w-auto' + (showMenubar ? '' : ' hidden')}>
+          <div className="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
+            <a href="/posts" className="hover:bg-gray-400 rounded py-2 px-4 mx-2">
               Posts
             </a>
-            <a href="/about/" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+            <a href="/about" className="hover:bg-gray-400 rounded py-2 px-4 mx-2">
               About Me
             </a>
-            <a href="/contact/form" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+            <a href="/contact/form" className="hover:bg-gray-400 rounded py-2 px-4 mx-2">
               Contact
             </a>
           </div>
