@@ -10,13 +10,27 @@ export default async function (req, res) {
       to: email, // To client
       from: process.env.ADMIN_MAIL,
       subject: 'お問い合わせありがとうございます',
-      text: `お問い合わせありがとうございます。rn順番に回答を行いますので、今しばらくお待ち下さい。rnrn以下の内容で送信されました。rnお名前：${name}rnメールアドレス：${email}rnお問い合わせ内容：${contents}`,
+      text: `お問い合わせありがとうございます。
+順番に回答を行いますので、今しばらくお待ち下さい。
+以下の内容で送信されました。
+■お名前
+${name}
+■メールアドレス
+${email}
+■お問い合わせ内容
+${contents}`,
     },
     {
       to: process.env.ADMIN_MAIL, // To admin
       from: process.env.ADMIN_MAIL,
       subject: 'お問い合わせがありました',
-      text: `以下の内容でお問い合わせがありました。rnお名前：${name}¥rnメールアドレス：${email}rnお問い合わせ内容：${contents}`,
+      text: `以下の内容でお問い合わせがありました。
+■お名前
+${name}
+■メールアドレス
+${email}
+■お問い合わせ内容
+${contents}`,
     },
   ];
 
