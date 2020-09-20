@@ -1,0 +1,10 @@
+.max-h-64 {
+  @apply h-64 max-h-full;
+}
+
+.form-input,
+.form-textarea,
+.form-select,
+.form-multiselect {
+  @apply bg-gray-200;
+}

@@ -9,4 +9,5 @@ body {
 @tailwind utilities;
 
 /* original utilities */
-@import "./posts/detail.css";
+@import './posts/detail.css';
+@import './contact/form.css';
