@@ -10,8 +10,11 @@ import Profile from '../../components/molecules/profile';
 import SearchForm from '../../components/atom/SeachForm';
 import Footer from '../../components/molecules/footer';
 
+// test
+import _Pager from '../../components/atom/_Pager';
+
 // default setting
-const limit = 4;
+const limit = 5;
 const skip = 0;
 
 const Post = () => {
@@ -23,6 +26,7 @@ const Post = () => {
   if (q === undefined) q = '';
 
   useEffect(() => {
+    // 関数の実行
     async function getPosts() {
       const allPosts = await fetchEntriesPost(limit, skip, q);
       setPosts([...allPosts]);
@@ -49,6 +53,7 @@ const Post = () => {
                 />
               ))
             : null}
+          <_Pager />
         </section>
         <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
           <Profile />
