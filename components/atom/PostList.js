@@ -6,7 +6,7 @@ const PostListTop = ({ img_url, img_alt, title, publishDate, discription, slug }
   <div>
     <article className="flex shadow my-4">
       <Link href={'/posts/' + slug} as={'/posts/' + slug}>
-        <a className="flex items-center hover:bg-gray-100">
+        <a className="md:flex items-center hover:bg-gray-100">
           <div className="w-2/6">
             <img src={img_url} alt={img_alt} />
           </div>

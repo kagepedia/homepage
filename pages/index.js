@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import Head from '../components/head';
-import Header from '../components/molecules/header';
 import { fetchEntriesTop } from '../pages/api/contentful';
 import { formatDate } from '../utils/date';
 import { noImage } from '../utils/image';
+import Head from '../components/head';
+import Header from '../components/molecules/header';
 import PostList from '../components/atom/PostList';
 import Profile from '../components/molecules/profile';
 import Footer from '../components/molecules/footer';
