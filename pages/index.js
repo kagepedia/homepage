@@ -6,6 +6,7 @@ import Head from '../components/head';
 import Header from '../components/molecules/header';
 import PostList from '../components/atom/PostList';
 import Profile from '../components/molecules/profile';
+import SearchForm from '../components/atom/SeachForm';
 import Footer from '../components/molecules/footer';
 
 const Top = () => {
@@ -41,6 +42,7 @@ const Top = () => {
         </section>
         <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
           <Profile />
+          <SearchForm />
         </aside>
       </div>
       <Footer />

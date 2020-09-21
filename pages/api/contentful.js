@@ -18,10 +18,15 @@ export async function fetchEntriesTop() {
 }
 
 // Get Contents for Post Page
-export async function fetchEntriesPost() {
+export async function fetchEntriesPost(query) {
+  const limit = 2;
+  const skip = 0;
   const entries = await client.getEntries({
     content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+    limit,
+    skip,
     order: '-fields.publishDate',
+    query: query,
   });
   if (entries.items) return entries.items;
   console.log(`Error getting Entries for ${contentType.name}.`);

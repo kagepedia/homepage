@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter, withRouter } from 'next/router';
 import { fetchEntriesPost } from '../api/contentful';
 import { formatDate } from '../../utils/date';
 import { noImage } from '../../utils/image';
@@ -6,18 +7,24 @@ import Head from '../../components/head';
 import Header from '../../components/molecules/header';
 import PostList from '../../components/atom/PostList';
 import Profile from '../../components/molecules/profile';
+import SearchForm from '../../components/atom/SeachForm';
 import Footer from '../../components/molecules/footer';
 
 const Post = () => {
+  let {
+    query: { q },
+  } = useRouter();
   const [posts, setPosts] = useState([]);
+
+  if (q === undefined) q = '';
 
   useEffect(() => {
     async function getPosts() {
-      const allPosts = await fetchEntriesPost();
+      const allPosts = await fetchEntriesPost(q);
       setPosts([...allPosts]);
     }
     getPosts();
-  }, []);
+  }, [q]);
 
   return (
     <div>
@@ -41,6 +48,7 @@ const Post = () => {
         </section>
         <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
           <Profile />
+          <SearchForm />
         </aside>
       </div>
       <Footer />
