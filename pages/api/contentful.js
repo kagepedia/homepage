@@ -18,9 +18,7 @@ export async function fetchEntriesTop() {
 }
 
 // Get Contents for Post Page
-export async function fetchEntriesPost(query) {
-  const limit = 2;
-  const skip = 0;
+export async function fetchEntriesPost(limit, skip, query) {
   const entries = await client.getEntries({
     content_type: process.env.CTF_BLOG_POST_TYPE_ID,
     limit,

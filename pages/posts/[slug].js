@@ -5,6 +5,7 @@ import { noImage } from '../../utils/image';
 import Header from '../../components/molecules/header';
 import PostDtail from '../../components/atom/PostDetail';
 import Profile from '../../components/molecules/profile';
+import SeachForm from '../../components/atom/SeachForm';
 import Footer from '../../components/molecules/footer';
 
 export async function getStaticPaths() {
@@ -44,6 +45,7 @@ const Detail = ({ post }) => {
         </section>
         <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
           <Profile />
+          <SeachForm />
         </aside>
       </div>
       <Footer />

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useRouter, withRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { fetchEntriesPost } from '../api/contentful';
 import { formatDate } from '../../utils/date';
 import { noImage } from '../../utils/image';
@@ -9,6 +9,10 @@ import PostList from '../../components/atom/PostList';
 import Profile from '../../components/molecules/profile';
 import SearchForm from '../../components/atom/SeachForm';
 import Footer from '../../components/molecules/footer';
+
+// default setting
+const limit = 4;
+const skip = 0;
 
 const Post = () => {
   let {
@@ -20,7 +24,7 @@ const Post = () => {
 
   useEffect(() => {
     async function getPosts() {
-      const allPosts = await fetchEntriesPost(q);
+      const allPosts = await fetchEntriesPost(limit, skip, q);
       setPosts([...allPosts]);
     }
     getPosts();
