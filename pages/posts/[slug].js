@@ -2,27 +2,20 @@ import { useRouter } from 'next/router';
 import Header from '../../components/molecules/header';
 import Footer from '../../components/molecules/footer';
 import PostDtail from '../../components/atom/PostDetail';
+import { getAllPostsWithSlug, getPost } from '../api/contentful';
 import { formatDate } from '../../utils/date';
 import { noImage } from '../../utils/image';
 
-const client = require('contentful').createClient({
-  space: process.env.CTF_SPACE_ID,
-  accessToken: process.env.CTF_CDA_ACCESS_TOKEN,
-});
-
 export async function getStaticPaths() {
-  const entries = await client.getEntries();
+  const entries = await getAllPostsWithSlug();
   const paths = entries.items.map((post) => `/posts/${post.fields.slug}`);
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
   const slug = params.slug;
-  const entries = await client.getEntries({
-    content_type: process.env.CTF_BLOG_POST_TYPE_ID,
-    'fields.slug': slug,
-  });
-  const post = entries.items[0];
+  const entry = await getPost(slug);
+  const post = entry.items[0];
   return { props: { post } };
 }
 
