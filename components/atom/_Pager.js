@@ -40,13 +40,19 @@ const _Pager = ({ total, page, perPage, href, asCallback }) => {
             {pageNum.length > 0
               ? pageNum.map((i) =>
                   page > 2 && i === 2 ? (
-                    <div className="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full">...</div>
+                    <div key="dot-1" className="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full">
+                      ...
+                    </div>
                   ) : page < lastPage - 1 && i === lastPage - 1 ? (
-                    <div className="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full">...</div>
+                    <div key="dot-2" className="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full">
+                      ...
+                    </div>
                   ) : i === 1 ? (
-                    <div className="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-blue-800 text-white">{i}</div>
+                    <div key="current" className="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-blue-800 text-white">
+                      {i}
+                    </div>
                   ) : (
-                    <Link href={href} as={asCallback(i)}>
+                    <Link key={i} href={href} as={asCallback(i)}>
                       <a key={i} className="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full hover:bg-blue-800 hover:text-white">
                         {i}
                       </a>
