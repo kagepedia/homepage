@@ -37,7 +37,6 @@ export async function fetchEntriesAllPostCount(query) {
     order: '-fields.publishDate',
     query: query,
   });
-  // console.log(entries.items.length);
   if (entries.items) return entries.items.length;
 }
 

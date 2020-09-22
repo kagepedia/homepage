@@ -19,8 +19,7 @@ const limit = 1;
 const skip = 0;
 
 // Pathを生成
-/*
-const COUNT_PER_PAGE = 2;
+const COUNT_PER_PAGE = 1;
 export async function getStaticPaths() {
   const entries = await fetchEntriesAllPostCount();
   const pages = range(Math.ceil(entries.length / COUNT_PER_PAGE));
@@ -31,7 +30,13 @@ export async function getStaticPaths() {
 function range(stop) {
   return Array.from({ length: stop }, (_, i) => i + 1);
 }
-*/
+
+export async function getStaticProps({ params }) {
+  const page2 = parseInt(params.page, 10);
+  console.log(page2);
+  return page2;
+}
+
 // Pathを生成 ここまで
 
 const Post = () => {
