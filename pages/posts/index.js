@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { fetchEntriesPost } from '../api/contentful';
+import { fetchEntriesPost, fetchEntriesAllPostCount } from '../api/contentful';
 import { formatDate } from '../../utils/date';
 import { noImage } from '../../utils/image';
 import Head from '../../components/head';
@@ -10,11 +10,12 @@ import Profile from '../../components/molecules/profile';
 import SearchForm from '../../components/atom/SeachForm';
 import Footer from '../../components/molecules/footer';
 
-// test
+// _Pager
 import _Pager from '../../components/atom/_Pager';
 
 // default setting
-const limit = 5;
+const page = 3;
+const limit = 1;
 const skip = 0;
 
 const Post = () => {
@@ -22,6 +23,7 @@ const Post = () => {
     query: { q },
   } = useRouter();
   const [posts, setPosts] = useState([]);
+  const [postsCount, setPostsCount] = useState();
 
   if (q === undefined) q = '';
 
@@ -29,7 +31,9 @@ const Post = () => {
     // 関数の実行
     async function getPosts() {
       const allPosts = await fetchEntriesPost(limit, skip, q);
+      const allPostsCounter = await fetchEntriesAllPostCount(q);
       setPosts([...allPosts]);
+      setPostsCount(allPostsCounter);
     }
     getPosts();
   }, [q]);
@@ -53,7 +57,7 @@ const Post = () => {
                 />
               ))
             : null}
-          <_Pager />
+          <_Pager page={page} total={postsCount} perPage={limit} href="/posts/[page]" asCallback={(page) => `/posts/${page}`} />
         </section>
         <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
           <Profile />

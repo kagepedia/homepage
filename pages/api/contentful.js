@@ -30,6 +30,17 @@ export async function fetchEntriesPost(limit, skip, query) {
   console.log(`Error getting Entries for ${contentType.name}.`);
 }
 
+// PostCounter
+export async function fetchEntriesAllPostCount(query) {
+  const entries = await client.getEntries({
+    content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+    order: '-fields.publishDate',
+    query: query,
+  });
+  // console.log(entries.items.length);
+  if (entries.items) return entries.items.length;
+}
+
 // Get Contents for Post Detail Page
 export async function getAllPostsWithSlug() {
   const entries = await client.getEntries({
