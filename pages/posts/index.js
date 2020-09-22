@@ -15,24 +15,8 @@ import _Pager from '../../components/atom/_Pager';
 
 // default setting
 const page = 1;
-const limit = 1;
+const limit = 5;
 const skip = 0;
-
-// Pathを生成
-/*
-const COUNT_PER_PAGE = 2;
-export async function getStaticPaths() {
-  const entries = await fetchEntriesAllPostCount();
-  const pages = range(Math.ceil(entries.length / COUNT_PER_PAGE));
-  const paths = pages.map((page) => `/posts/${page}`);
-  return { paths, fallback: false };
-}
-
-function range(stop) {
-  return Array.from({ length: stop }, (_, i) => i + 1);
-}
-*/
-// Pathを生成 ここまで
 
 const Post = () => {
   let {
@@ -75,7 +59,7 @@ const Post = () => {
                 />
               ))
             : null}
-          {postsCount && lastPage !== 1 ? <_Pager page={page} total={postsCount} perPage={limit} href="/posts/[page]" asCallback={(page) => `/posts/${page}`} /> : ``}
+          {postsCount && lastPage !== 1 ? <_Pager page={page} total={postsCount} perPage={limit} href="/posts/page/[page]" asCallback={(page) => `/posts/page/${page}`} /> : ``}
         </section>
         <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
           <Profile />

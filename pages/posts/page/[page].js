@@ -1,29 +1,36 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { fetchEntriesPost, fetchEntriesAllPostCount } from '../api/contentful';
-import { formatDate } from '../../utils/date';
-import { noImage } from '../../utils/image';
-import Head from '../../components/head';
-import Header from '../../components/molecules/header';
-import PostList from '../../components/atom/PostList';
-import Profile from '../../components/molecules/profile';
-import SearchForm from '../../components/atom/SeachForm';
-import Footer from '../../components/molecules/footer';
+import { fetchEntriesPost, fetchEntriesAllPostCount } from '../../api/contentful';
+import { formatDate } from '../../../utils/date';
+import { noImage } from '../../../utils/image';
+import Head from '../../../components/head';
+import Header from '../../../components/molecules/header';
+import PostList from '../../../components/atom/PostList';
+import Profile from '../../../components/molecules/profile';
+import SearchForm from '../../../components/atom/SeachForm';
+import Footer from '../../../components/molecules/footer';
 
 // _Pager
-import _Pager from '../../components/atom/_Pager';
+import _Pager from '../../../components/atom/_Pager';
 
 // default setting
-const page = 1;
-const limit = 1;
-const skip = 0;
+const limit = 5;
+
+/*
+let {
+  query: { q },
+} = useRouter();
+
+if (q === undefined) q = '';
+*/
 
 // Pathを生成
-const COUNT_PER_PAGE = 1;
+const COUNT_PER_PAGE = 5;
 export async function getStaticPaths() {
   const entries = await fetchEntriesAllPostCount();
-  const pages = range(Math.ceil(entries.length / COUNT_PER_PAGE));
-  const paths = pages.map((page) => `/posts/${page}`);
+  const lastPages = Math.ceil(entries / COUNT_PER_PAGE);
+  const pages = range(lastPages);
+  const paths = pages.map((page) => `/posts/page/${page}`);
   return { paths, fallback: false };
 }
 
@@ -32,17 +39,26 @@ function range(stop) {
 }
 
 export async function getStaticProps({ params }) {
-  const page2 = parseInt(params.page, 10);
-  console.log(page2);
-  return page2;
+  const count = await fetchEntriesAllPostCount();
+  const page = parseInt(params.page, 10);
+  const end = COUNT_PER_PAGE * page;
+  const start = end - COUNT_PER_PAGE;
+  const total = count;
+  const perPage = COUNT_PER_PAGE;
+  const skip = COUNT_PER_PAGE * (page - 1);
+  const posts = await fetchEntriesPost(limit, skip, '');
+  return { props: { posts, page, total, perPage } };
 }
-
 // Pathを生成 ここまで
 
-const Post = () => {
+const Post = ({ posts, page, total, perPage }) => {
+  // const { posts, page, total, perPage } = props;
+  /*
   let {
     query: { q },
   } = useRouter();
+  */
+  /*
   const [posts, setPosts] = useState([]);
   const [postsCount, setPostsCount] = useState(0);
 
@@ -58,8 +74,9 @@ const Post = () => {
     }
     getPosts();
   }, [q]);
+  */
 
-  const lastPage = Math.ceil(postsCount / limit);
+  const lastPage = Math.ceil(total / limit);
 
   return (
     <div>
@@ -80,7 +97,7 @@ const Post = () => {
                 />
               ))
             : null}
-          {postsCount && lastPage !== 1 ? <_Pager page={page} total={postsCount} perPage={limit} href="/posts/[page]" asCallback={(page) => `/posts/${page}`} /> : ``}
+          {total && lastPage !== 1 ? <_Pager page={page} total={total} perPage={perPage} href="/posts/page/[page]" asCallback={(page) => `/posts/page/${page}`} /> : ``}
         </section>
         <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
           <Profile />

@@ -47,7 +47,7 @@ const _Pager = ({ total, page, perPage, href, asCallback }) => {
                     <div key="dot-2" className="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full">
                       ...
                     </div>
-                  ) : i === 1 ? (
+                  ) : page === i ? (
                     <div key="current" className="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-blue-800 text-white">
                       {i}
                     </div>
