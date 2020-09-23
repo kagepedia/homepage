@@ -26,7 +26,7 @@ const Post = () => {
 
   useEffect(() => {
     // queryが利用可能になったら処理される
-    if (router.asPath !== router.route) {
+    if (router.asPath !== router.route && router.query.q !== '') {
       setQuesy(router.query.q);
     }
   }, [router]);
