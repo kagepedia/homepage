@@ -51,19 +51,21 @@ const Post = () => {
       <Header />
       <div className="container mx-auto flex flex-wrap py-6">
         <section className="w-full md:w-2/3 flex flex-col items-center px-3">
-          {posts.length > 0
-            ? posts.map((p) => (
-                <PostList
-                  img_url={noImage(p).url}
-                  img_alt={noImage(p).title}
-                  title={p.fields.title}
-                  publishDate={formatDate(p.fields.publishDate)}
-                  discription={p.fields.discription}
-                  slug={p.fields.slug}
-                  key={p.fields.slug}
-                />
-              ))
-            : null}
+          {posts.length > 0 ? (
+            posts.map((p) => (
+              <PostList
+                img_url={noImage(p).url}
+                img_alt={noImage(p).title}
+                title={p.fields.title}
+                publishDate={formatDate(p.fields.publishDate)}
+                discription={p.fields.discription}
+                slug={p.fields.slug}
+                key={p.fields.slug}
+              />
+            ))
+          ) : (
+            <p>表示する記事がありません</p>
+          )}
           {postsCount && lastPage !== 1 ? <_Pager page={page} total={postsCount} perPage={limit} href={`/posts/page/[page]`} asCallback={(page) => `/posts/page/${page}`} /> : ``}
         </section>
         <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
