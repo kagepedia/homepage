@@ -1,9 +1,10 @@
-import Head from '../../components/head';
-import Header from '../../components/molecules/header';
-import Footer from '../../components/molecules/footer';
+import fetch from 'node-fetch';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { isLength, isMail } from '../../utils/form_validation';
+import Head from '../../components/head';
+import Header from '../../components/molecules/header';
+import Footer from '../../components/molecules/footer';
 
 const Form = () => {
   const [isDisabled, setisDisabled] = useState(false);

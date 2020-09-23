@@ -1,30 +1,29 @@
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHistory } from '@fortawesome/free-solid-svg-icons';
 
-// https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492__340.jpg
-
-const PostList = ({ title, publishDate, discription, slug }) => (
-  <div className="my-6 md:mx-10 lg:mx-64">
-    <Link href={'/posts/' + slug} as={'/posts/' + slug}>
-      <a>
-        <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-          <div className="mb-8">
-            <p className="text-sm text-gray-600 flex items-center">
-              <svg
-                className="fill-current text-gray-500 w-3 h-3 mr-2"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-              </svg>
+const PostListTop = ({ img_url, img_alt, title, publishDate, discription, slug }) => (
+  <div>
+    <article className="flex shadow my-4">
+      <Link href={'/posts/' + slug} as={'/posts/' + slug}>
+        <a className="md:flex items-center hover:bg-gray-100">
+          <div className="w-2/6">
+            <img src={img_url} alt={img_alt} />
+          </div>
+          <div className="flex flex-col justify-start p-6">
+            <p className="text-sm pb-3">
+              <span className="mr-2">
+                <FontAwesomeIcon icon={faHistory} />
+              </span>
               {publishDate}
             </p>
-            <div className="text-gray-900 font-bold text-xl mb-2">{title}</div>
-            <p className="text-gray-700 text-base">{discription}</p>
+            <p className="text-3xl font-bold pb-4">{title}</p>
+            <p className="pb-6">{discription}</p>
           </div>
-        </div>
-      </a>
-    </Link>
+        </a>
+      </Link>
+    </article>
   </div>
 );
 
-export default PostList;
+export default PostListTop;

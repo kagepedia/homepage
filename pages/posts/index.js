@@ -1,42 +1,76 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { fetchEntriesPost, fetchEntriesAllPostCount } from '../api/contentful';
+import { formatDate } from '../../utils/date';
+import { noImage } from '../../utils/image';
 import Head from '../../components/head';
 import Header from '../../components/molecules/header';
-import Footer from '../../components/molecules/footer';
 import PostList from '../../components/atom/PostList';
-import { formatDate } from '../../utils/date';
+import Profile from '../../components/molecules/profile';
+import SearchForm from '../../components/atom/SeachForm';
+import Footer from '../../components/molecules/footer';
 
-const client = require('contentful').createClient({
-  space: process.env.CTF_SPACE_ID,
-  accessToken: process.env.CTF_CDA_ACCESS_TOKEN,
-});
+// _Pager
+import _Pager from '../../components/atom/_Pager';
+
+// default setting
+const page = 1;
+const limit = 5;
+const skip = 0;
 
 const Post = () => {
-  async function fetchEntries() {
-    const entries = await client.getEntries();
-    if (entries.items) return entries.items;
-    console.log(`Error getting Entries for ${contentType.name}.`);
-  }
-
+  const router = useRouter();
   const [posts, setPosts] = useState([]);
+  const [postsCount, setPostsCount] = useState(0);
+  const [query, setQuesy] = useState();
 
   useEffect(() => {
-    async function getPosts() {
-      const allPosts = await fetchEntries();
-      setPosts([...allPosts]);
+    // queryが利用可能になったら処理される
+    if (router.asPath !== router.route) {
+      setQuesy(router.query.q);
     }
-    getPosts();
-  }, []);
+  }, [router]);
+
+  useEffect(() => {
+    // 関数の実行
+    async function getPosts(query) {
+      const allPosts = await fetchEntriesPost(limit, skip, query);
+      const allPostsCounter = await fetchEntriesAllPostCount(query);
+      setPosts([...allPosts]);
+      setPostsCount(allPostsCounter);
+    }
+    getPosts(query);
+  }, [query]);
+
+  const lastPage = Math.ceil(postsCount / limit);
+  // const withParams = router.asPath.split('?')[1];
 
   return (
     <div>
       <Head title={'記事一覧'} url={'https://kagepedia.com/posts'} />
       <Header />
-      <div className="p-4 bg-white rounded shadow">
-        <h1 className="text-2xl font-bold text-center">Post</h1>
+      <div className="container mx-auto flex flex-wrap py-6">
+        <section className="w-full md:w-2/3 flex flex-col items-center px-3">
+          {posts.length > 0
+            ? posts.map((p) => (
+                <PostList
+                  img_url={noImage(p).url}
+                  img_alt={noImage(p).title}
+                  title={p.fields.title}
+                  publishDate={formatDate(p.fields.publishDate)}
+                  discription={p.fields.discription}
+                  slug={p.fields.slug}
+                  key={p.fields.slug}
+                />
+              ))
+            : null}
+          {postsCount && lastPage !== 1 ? <_Pager page={page} total={postsCount} perPage={limit} href={`/posts/page/[page]`} asCallback={(page) => `/posts/page/${page}`} /> : ``}
+        </section>
+        <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
+          <Profile />
+          <SearchForm />
+        </aside>
       </div>
-      {posts.length > 0
-        ? posts.map((p) => <PostList title={p.fields.title} publishDate={formatDate(p.fields.publishDate)} discription={p.fields.discription} slug={p.fields.slug} key={p.fields.slug} />)
-        : null}
       <Footer />
     </div>
   );
