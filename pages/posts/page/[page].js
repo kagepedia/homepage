@@ -16,14 +16,6 @@ import _Pager from '../../../components/atom/_Pager';
 // default setting
 const limit = 5;
 
-/*
-let {
-  query: { q },
-} = useRouter();
-
-if (q === undefined) q = '';
-*/
-
 // Pathを生成
 const COUNT_PER_PAGE = 5;
 export async function getStaticPaths() {
@@ -52,30 +44,6 @@ export async function getStaticProps({ params }) {
 // Pathを生成 ここまで
 
 const Post = ({ posts, page, total, perPage }) => {
-  // const { posts, page, total, perPage } = props;
-  /*
-  let {
-    query: { q },
-  } = useRouter();
-  */
-  /*
-  const [posts, setPosts] = useState([]);
-  const [postsCount, setPostsCount] = useState(0);
-
-  if (q === undefined) q = '';
-
-  useEffect(() => {
-    // 関数の実行
-    async function getPosts() {
-      const allPosts = await fetchEntriesPost(limit, skip, q);
-      const allPostsCounter = await fetchEntriesAllPostCount(q);
-      setPosts([...allPosts]);
-      setPostsCount(allPostsCounter);
-    }
-    getPosts();
-  }, [q]);
-  */
-
   const lastPage = Math.ceil(total / limit);
 
   return (

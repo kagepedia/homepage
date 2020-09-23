@@ -19,26 +19,31 @@ const limit = 5;
 const skip = 0;
 
 const Post = () => {
-  let {
-    query: { q },
-  } = useRouter();
+  const router = useRouter();
   const [posts, setPosts] = useState([]);
   const [postsCount, setPostsCount] = useState(0);
+  const [query, setQuesy] = useState();
 
-  if (q === undefined) q = '';
+  useEffect(() => {
+    // queryが利用可能になったら処理される
+    if (router.asPath !== router.route) {
+      setQuesy(router.query.q);
+    }
+  }, [router]);
 
   useEffect(() => {
     // 関数の実行
-    async function getPosts() {
-      const allPosts = await fetchEntriesPost(limit, skip, q);
-      const allPostsCounter = await fetchEntriesAllPostCount(q);
+    async function getPosts(query) {
+      const allPosts = await fetchEntriesPost(limit, skip, query);
+      const allPostsCounter = await fetchEntriesAllPostCount(query);
       setPosts([...allPosts]);
       setPostsCount(allPostsCounter);
     }
-    getPosts();
-  }, [q]);
+    getPosts(query);
+  }, [query]);
 
   const lastPage = Math.ceil(postsCount / limit);
+  // const withParams = router.asPath.split('?')[1];
 
   return (
     <div>
@@ -59,7 +64,7 @@ const Post = () => {
                 />
               ))
             : null}
-          {postsCount && lastPage !== 1 ? <_Pager page={page} total={postsCount} perPage={limit} href="/posts/page/[page]" asCallback={(page) => `/posts/page/${page}`} /> : ``}
+          {postsCount && lastPage !== 1 ? <_Pager page={page} total={postsCount} perPage={limit} href={`/posts/page/[page]`} asCallback={(page) => `/posts/page/${page}`} /> : ``}
         </section>
         <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
           <Profile />

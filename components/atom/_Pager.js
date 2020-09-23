@@ -39,11 +39,11 @@ const _Pager = ({ total, page, perPage, href, asCallback }) => {
           <div className="flex h-12 font-medium rounded-full bg-gray-200">
             {pageNum.length > 0
               ? pageNum.map((i) =>
-                  page > 2 && i === 2 ? (
+                  page > 2 && i === 2 && page !== 3 && i === 2 ? (
                     <div key="dot-1" className="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full">
                       ...
                     </div>
-                  ) : page < lastPage - 1 && i === lastPage - 1 ? (
+                  ) : page < lastPage - 1 && i === lastPage - 1 && page < lastPage - 2 ? (
                     <div key="dot-2" className="w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in rounded-full">
                       ...
                     </div>
