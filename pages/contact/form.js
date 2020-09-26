@@ -14,6 +14,7 @@ const Form = () => {
     name: '',
     email: '',
     contents: '',
+    agreement: '',
   });
 
   // change handler
@@ -107,6 +108,20 @@ const Form = () => {
             <div className="md:w-2/3">
               <textarea name="contents" className="form-textarea block w-full focus:bg-white" maxLength="200" rows="8" value={form.contents} onChange={handleChange} required></textarea>
             </div>
+          </div>
+          <div className="my-6 text-center">
+            <label>
+              <input className="" type="checkbox" name="agreement" value="1" />
+              <span className="text-left inline-block">
+                弊社規定の「
+                <a href="/privacy" target="_blank">
+                  プライバシーポリシー
+                </a>
+                」の内容に同意する。
+                <br />
+                ※ご同意いただけない場合は送信ができません。
+              </span>
+            </label>
           </div>
           <div>
             {Object.keys(errors).map((err, index) => (
