@@ -6,7 +6,7 @@ const Thanks = () => (
   <div>
     <Head title={'お問い合わせ（完了）'} url={'https://kagepedia.com/contact/thanks'} />
     <Header />
-    <div className="p-4 bg-white rounded shadow">
+    <div className="p-4 lg:ml-40 lg:w-9/12">
       <h1 className="text-2xl font-bold border-b-2">お問い合わせ完了</h1>
       <h2 className="text-xl font-semibold my-4">お問い合わせメールを送信しました</h2>
       <p>
@@ -21,9 +21,11 @@ const Thanks = () => (
         <br />
         <span className="text-red-600">※迷惑メールフォルダに受信されている場合もございますので一度ご確認ください。</span>
       </p>
-      <a href="/" className="border-solid border border-gray-600 hover:text-white hover:bg-black h-12 w-32">
-        TOPへ戻る
-      </a>
+      <div className="mt-5 items-center">
+        <a href="/" className="bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded">
+          TOPへ戻る
+        </a>
+      </div>
     </div>
     <Footer />
   </div>

@@ -31,7 +31,7 @@ const PostDetail = ({ img_url, img_alt, title, publishDate, discription, body, s
     <div className="bg-white rounded-b p-4 flex flex-col justify-between leading-normal">
       <h2 className="text-center">{title}</h2>
       <p className="text-center">投稿日時：{publishDate}</p>
-      <img className="md:w-1/2 md:mx-auto my-4" src={img_url} alt={img_alt}></img>
+      <img className="md:mx-auto my-4" src={img_url} alt={img_alt}></img>
       <p className="whitespace-pre-line text-center">{discription}</p>
       <div className="markdown mt-5 md:mx-6 lg:mx-48" dangerouslySetInnerHTML={{ __html: md.render(body) }}></div>
     </div>

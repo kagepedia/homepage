@@ -74,7 +74,7 @@ const Form = () => {
     <div>
       <Head title={'お問い合わせ（入力）'} url={'https://kagepedia.com/contact/form'} />
       <Header />
-      <div className="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+      <div className="p-8 mt-6 lg:mt-0 md:w-9/12 md:ml-24 lg:ml-40">
         <h1 className="text-2xl font-bold">お問い合わせフォーム</h1>
         <p className="text-gray-800 mb-10">当WEBサイトについてのお問い合わせ等、ご意見をお待ちしています。</p>
         <form onSubmit={handleSubmit}>
