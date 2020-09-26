@@ -26,15 +26,15 @@ const Post = () => {
   const router = useRouter();
   const [posts, setPosts] = useState([]);
   const [postsCount, setPostsCount] = useState(0);
-  const [query, setQuesy] = useState();
+  const [query, setQuesy] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // queryが利用可能になったら処理される
-    if (router.asPath !== router.route && router.query.q !== '') {
+    if (router.asPath !== router.route) {
       setQuesy(router.query.q);
     }
-  }, [router]);
+  }, [query]);
 
   useEffect(() => {
     // 関数の実行
@@ -52,7 +52,6 @@ const Post = () => {
   }, [query]);
 
   const lastPage = Math.ceil(postsCount / limit);
-  // const withParams = router.asPath.split('?')[1];
 
   return (
     <div>
