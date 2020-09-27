@@ -10,6 +10,10 @@ import Profile from '../../components/molecules/profile';
 import SearchForm from '../../components/atom/SeachForm';
 import Footer from '../../components/molecules/footer';
 
+// Loading
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+
 // _Pager
 import _Pager from '../../components/atom/_Pager';
 
@@ -22,28 +26,31 @@ const Post = () => {
   const router = useRouter();
   const [posts, setPosts] = useState([]);
   const [postsCount, setPostsCount] = useState(0);
-  const [query, setQuesy] = useState();
+  const [query, setQuesy] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const { q } = router.query;
 
   useEffect(() => {
     // queryが利用可能になったら処理される
-    if (router.asPath !== router.route && router.query.q !== '') {
-      setQuesy(router.query.q);
-    }
-  }, [router]);
+    if (q !== undefined) setQuesy(q);
+  }, [q]);
 
   useEffect(() => {
     // 関数の実行
     async function getPosts(query) {
+      setIsLoading(true);
       const allPosts = await fetchEntriesPost(limit, skip, query);
       const allPostsCounter = await fetchEntriesAllPostCount(query);
       setPosts([...allPosts]);
       setPostsCount(allPostsCounter);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 400);
     }
     getPosts(query);
   }, [query]);
 
   const lastPage = Math.ceil(postsCount / limit);
-  // const withParams = router.asPath.split('?')[1];
 
   return (
     <div>
@@ -51,20 +58,26 @@ const Post = () => {
       <Header />
       <div className="container mx-auto flex flex-wrap py-6">
         <section className="w-full md:w-2/3 flex flex-col items-center px-3">
-          {posts.length > 0
-            ? posts.map((p) => (
-                <PostList
-                  img_url={noImage(p).url}
-                  img_alt={noImage(p).title}
-                  title={p.fields.title}
-                  publishDate={formatDate(p.fields.publishDate)}
-                  discription={p.fields.discription}
-                  slug={p.fields.slug}
-                  key={p.fields.slug}
-                />
-              ))
-            : null}
-          {postsCount && lastPage !== 1 ? <_Pager page={page} total={postsCount} perPage={limit} href={`/posts/page/[page]`} asCallback={(page) => `/posts/page/${page}`} /> : ``}
+          {isLoading ? (
+            <div className="animate-spin text-6xl text-blue-800">
+              <FontAwesomeIcon icon={faCircleNotch} />
+            </div>
+          ) : posts.length > 0 ? (
+            posts.map((p) => (
+              <PostList
+                img_url={noImage(p).url}
+                img_alt={noImage(p).title}
+                title={p.fields.title}
+                publishDate={formatDate(p.fields.publishDate)}
+                discription={p.fields.discription}
+                slug={p.fields.slug}
+                key={p.fields.slug}
+              />
+            ))
+          ) : (
+            <p>表示する記事がありません</p>
+          )}
+          {postsCount && lastPage !== 1 && !isLoading ? <_Pager page={page} total={postsCount} perPage={limit} href={`/posts/page/[page]`} asCallback={(page) => `/posts/page/${page}`} /> : ``}
         </section>
         <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
           <Profile />

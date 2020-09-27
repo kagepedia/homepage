@@ -1,4 +1,7 @@
+import markdownItAnchor from 'markdown-it-anchor';
+import markdownItTableOfContents from 'markdown-it-table-of-contents';
 import Head from '../../components/head';
+import DisqusComment from '../atom/DisqusComment';
 
 // markdown-it-plugin
 const md = require('markdown-it')({
@@ -20,7 +23,9 @@ const md = require('markdown-it')({
   .use(require('markdown-it-container'), 'warning')
   .use(require('markdown-it-container'), 'danger')
   .use(require('markdown-it-highlightjs'))
-  .use(require('markdown-it-katex'));
+  .use(require('markdown-it-katex'))
+  .use(markdownItAnchor)
+  .use(markdownItTableOfContents);
 // markdown-it-plugin
 
 const PostDetail = ({ img_url, img_alt, title, publishDate, discription, body, slug }) => (
@@ -31,9 +36,12 @@ const PostDetail = ({ img_url, img_alt, title, publishDate, discription, body, s
     <div className="bg-white rounded-b p-4 flex flex-col justify-between leading-normal">
       <h2 className="text-center">{title}</h2>
       <p className="text-center">投稿日時：{publishDate}</p>
-      <img className="md:w-1/2 md:mx-auto my-4" src={img_url} alt={img_alt}></img>
+      <img className="md:mx-auto my-4" src={img_url} alt={img_alt}></img>
       <p className="whitespace-pre-line text-center">{discription}</p>
       <div className="markdown mt-5 md:mx-6 lg:mx-48" dangerouslySetInnerHTML={{ __html: md.render(body) }}></div>
+    </div>
+    <div>
+      <DisqusComment title={title} url={'https://kagepedia.com/posts/' + slug} slug={slug} />
     </div>
   </div>
 );
