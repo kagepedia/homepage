@@ -8,6 +8,7 @@ const DisqusComment = ({ title, url, slug }) => (
         url: url,
         identifier: slug,
         title: title,
+        language: 'ja',
       }}
     />
   </div>
