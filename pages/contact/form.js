@@ -8,13 +8,13 @@ import Footer from '../../components/molecules/footer';
 
 const Form = () => {
   const [isDisabled, setisDisabled] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({ errs: { name: '', email: '', contents: '' } });
+  const [isChecked, setIsChecked] = useState(0);
 
   const [form, setForm] = useState({
     name: '',
     email: '',
     contents: '',
-    agreement: '',
   });
 
   // change handler
@@ -22,6 +22,11 @@ const Form = () => {
     const target = e.target;
     const name = target.name;
     const value = target.value;
+    if (name == 'agreement' && value == 1) {
+      setIsChecked(0);
+    } else if (name == 'agreement' && value == 0) {
+      setIsChecked(1);
+    }
     setForm({
       ...form,
       [name]: value,
@@ -50,6 +55,7 @@ const Form = () => {
     if (form.email && isMail(form.email) === false) err.email = 'メールアドレスを正しく入力してください';
     if (!form.contents) err.contents = 'お問い合わせ内容は必須項目です';
     if (form.contents && isLength(form.contents, 200) === false) err.contents = 'お問い合わせ内容の文字数は200字以内で入力してください';
+    if (isChecked == 0) err.agreement = '「プラバシーポリシー」の内容に同意してください';
     return err;
   };
 
@@ -71,6 +77,8 @@ const Form = () => {
     });
   };
 
+  console.log(errors);
+
   return (
     <div>
       <Head title={'お問い合わせ（入力）'} url={'https://kagepedia.com/contact/form'} />
@@ -87,6 +95,7 @@ const Form = () => {
             </div>
             <div className="md:w-2/3">
               <input type="text" maxLength="30" name="name" className="form-input block w-full focus:bg-white" value={form.name} onChange={handleChange} required />
+              {errors.errs.name ? <p className="mt-2 text-red-700">{errors.errs.name}</p> : null}
             </div>
           </div>
           <div className="md:flex mb-6">
@@ -97,6 +106,7 @@ const Form = () => {
             </div>
             <div className="md:w-2/3">
               <input type="email" maxLength="30" name="email" className="form-input block w-full focus:bg-white" value={form.email} onChange={handleChange} required />
+              {errors.errs.email ? <p className="mt-2 text-red-700">{errors.errs.email}</p> : null}
             </div>
           </div>
           <div className="md:flex mb-6">
@@ -107,13 +117,14 @@ const Form = () => {
             </div>
             <div className="md:w-2/3">
               <textarea name="contents" className="form-textarea block w-full focus:bg-white" maxLength="200" rows="8" value={form.contents} onChange={handleChange} required></textarea>
+              {errors.errs.contents ? <p className="mt-2 text-red-700">{errors.errs.contents}</p> : null}
             </div>
           </div>
           <div className="my-6 text-center">
             <label>
-              <input className="" type="checkbox" name="agreement" value="1" />
+              <input className="" type="checkbox" name="agreement" value={isChecked} onChange={handleChange} />
               <span className="text-left inline-block">
-                弊社規定の「
+                当サイトの「
                 <a href="/privacy" target="_blank">
                   プライバシーポリシー
                 </a>
@@ -121,12 +132,9 @@ const Form = () => {
                 <br />
                 ※ご同意いただけない場合は送信ができません。
               </span>
+              {errors.errs.agreement ? <p className="mt-2 mr-20 text-red-700">{errors.errs.agreement}</p> : null}
+              <p></p>
             </label>
-          </div>
-          <div>
-            {Object.keys(errors).map((err, index) => (
-              <li key={index}>{err}</li>
-            ))}
           </div>
           <div className="md:flex md:items-center">
             <div className="md:w-1/3"></div>
