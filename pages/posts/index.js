@@ -28,13 +28,12 @@ const Post = () => {
   const [postsCount, setPostsCount] = useState(0);
   const [query, setQuesy] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const { q } = router.query;
 
   useEffect(() => {
     // queryが利用可能になったら処理される
-    if (router.asPath !== router.route) {
-      setQuesy(router.query.q);
-    }
-  }, [query]);
+    if (q !== undefined) setQuesy(q);
+  }, [q]);
 
   useEffect(() => {
     // 関数の実行
