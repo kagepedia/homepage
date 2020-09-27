@@ -1,3 +1,5 @@
+import markdownItAnchor from 'markdown-it-anchor';
+import markdownItTableOfContents from 'markdown-it-table-of-contents';
 import Head from '../../components/head';
 
 // markdown-it-plugin
@@ -20,7 +22,9 @@ const md = require('markdown-it')({
   .use(require('markdown-it-container'), 'warning')
   .use(require('markdown-it-container'), 'danger')
   .use(require('markdown-it-highlightjs'))
-  .use(require('markdown-it-katex'));
+  .use(require('markdown-it-katex'))
+  .use(markdownItAnchor)
+  .use(markdownItTableOfContents);
 // markdown-it-plugin
 
 const PostDetail = ({ img_url, img_alt, title, publishDate, discription, body, slug }) => (
