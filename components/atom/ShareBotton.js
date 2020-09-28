@@ -1,3 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faLine } from '@fortawesome/free-brands-svg-icons';
+// import { faHatebu } from '@fortawesome/free-brands-svg-icons';
+import { faClipboard } from '@fortawesome/free-solid-svg-icons';
+
 const ShareBotton = ({ title, url, slug }) => {
   // {process.env.BASE_URL} ←を使う
   // https://twitter.com/share?url=https://kagepedia.com/&text=ひなたぼっこブログ textはエンコード
@@ -11,21 +18,30 @@ const ShareBotton = ({ title, url, slug }) => {
   const clipBoard = `タイトル + URL`;
 
   return (
-    <div>
-      <div className="twitter">
-        <a href={twitterShare}></a>
+    <div className="flex">
+      <div className="twitter text-blue-600 text-3xl pr-4">
+        <a href={twitterShare}>
+          <FontAwesomeIcon icon={faTwitter} />
+          <span className="text-base block">ツイート</span>
+        </a>
       </div>
-      <div className="facebook">
-        <a href={facebookShare}></a>
+      <div className="facebook text-blue-700 text-3xl pr-4">
+        <a href={facebookShare}>
+          <FontAwesomeIcon icon={faFacebook} />
+          <span className="text-base block">シェア</span>
+        </a>
       </div>
-      <div className="hatena">
-        <a href={hatenaShare}></a>
+      <div className="line text-green-600 text-3xl pr-4">
+        <a href={lineShare}>
+          <FontAwesomeIcon icon={faLine} />
+          <span className="text-base block">line</span>
+        </a>
       </div>
-      <div className="line">
-        <a href={lineShare}></a>
-      </div>
-      <div className="clipboard">
-        <a href={clipBoard}></a>
+      <div className="clipboard text-gray-700 text-3xl">
+        <a href={clipBoard}>
+          <FontAwesomeIcon icon={faClipboard} />
+          <span className="text-base block">コピー</span>
+        </a>
       </div>
     </div>
   );
