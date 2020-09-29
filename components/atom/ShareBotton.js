@@ -5,20 +5,16 @@ import { faLine } from '@fortawesome/free-brands-svg-icons';
 // import { faHatebu } from '@fortawesome/free-brands-svg-icons';
 import { faClipboard } from '@fortawesome/free-solid-svg-icons';
 
-const ShareBotton = ({ title, url, slug }) => {
+const ShareBotton = ({ title, slug }) => {
   // {process.env.BASE_URL} ←を使う
-  // https://twitter.com/share?url=https://kagepedia.com/&text=ひなたぼっこブログ textはエンコード
-  const twitterShare = `https://twitter.com/share`;
-  // https://www.facebook.com/sharer/sharer.php?u=https://kagepedia.com/ urlエンコード
-  const facebookShare = `https://www.facebook.com/sharer/sharer.php?u=postURL`;
-  // http://b.hatena.ne.jp/entry/kagepedia.com/posts/markdown-it-sample ホストとパス(http://なしのURLアドレス)を付ける形
-  const hatenaShare = `https://b.hatena.ne.jp/entry/`;
-  // http://line.me/R/msg/text/?ひなたぼっこ https://kagepedia.com/post
-  const lineShare = ``;
-  const clipBoard = `タイトル + URL`;
+  const twitterShare = encodeURI(`//twitter.com/share?url=${process.env.BASE_URL}/posts/${slug}/&text=${title}`);
+  const facebookShare = encodeURI(`//www.facebook.com/sharer/sharer.php?u=${process.env.BASE_URL}/posts/${slug}`);
+  const hatenaShare = encodeURI(`//b.hatena.ne.jp/entry/kagepedia.com/posts/${slug}`);
+  const lineShare = encodeURI(`//line.me/R/msg/text/?${title} ${process.env.BASE_URL}/posts/${slug}`);
+  const clipBoard = `${title} ${process.env.BASE_URL}/posts/${slug}`;
 
   return (
-    <div className="flex">
+    <div className="flex text-center max-w-5xl">
       <div className="twitter text-blue-600 text-3xl pr-4">
         <a href={twitterShare}>
           <FontAwesomeIcon icon={faTwitter} />
