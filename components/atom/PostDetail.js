@@ -1,6 +1,7 @@
 import markdownItAnchor from 'markdown-it-anchor';
 import markdownItTableOfContents from 'markdown-it-table-of-contents';
 import Head from '../../components/head';
+import ShareBotton from '../atom/ShareBotton';
 import DisqusComment from '../atom/DisqusComment';
 
 // markdown-it-plugin
@@ -37,8 +38,14 @@ const PostDetail = ({ img_url, img_alt, title, publishDate, discription, body, s
       <h2 className="text-center">{title}</h2>
       <p className="text-center">投稿日時：{publishDate}</p>
       <img className="md:mx-auto my-4" src={img_url} alt={img_alt}></img>
+      <div className="mx-auto my-10">
+        <ShareBotton title={title} slug={slug} />
+      </div>
       <p className="whitespace-pre-line text-center">{discription}</p>
-      <div className="markdown mt-5 md:mx-6 lg:mx-48" dangerouslySetInnerHTML={{ __html: md.render(body) }}></div>
+      <div className="markdown mt-5" dangerouslySetInnerHTML={{ __html: md.render(body) }}></div>
+      <div className="mx-auto my-10">
+        <ShareBotton title={title} slug={slug} />
+      </div>
     </div>
     <div>
       <DisqusComment title={title} url={'https://kagepedia.com/posts/' + slug} slug={slug} />

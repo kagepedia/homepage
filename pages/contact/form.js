@@ -77,8 +77,6 @@ const Form = () => {
     });
   };
 
-  console.log(errors);
-
   return (
     <div>
       <Head title={'お問い合わせ（入力）'} url={'https://kagepedia.com/contact/form'} />
