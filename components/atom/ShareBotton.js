@@ -3,7 +3,7 @@ import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faLine } from '@fortawesome/free-brands-svg-icons';
 // import { faHatebu } from '@fortawesome/free-brands-svg-icons';
-import { faClipboard } from '@fortawesome/free-solid-svg-icons';
+// import { faClipboard } from '@fortawesome/free-solid-svg-icons';
 
 const ShareBotton = ({ title, slug }) => {
   // {process.env.BASE_URL} ←を使う
@@ -14,30 +14,35 @@ const ShareBotton = ({ title, slug }) => {
   const clipBoard = `${title} ${process.env.BASE_URL}/posts/${slug}`;
 
   return (
-    <div className="flex text-center max-w-5xl">
-      <div className="twitter text-blue-600 text-3xl pr-4">
-        <a href={twitterShare}>
-          <FontAwesomeIcon icon={faTwitter} />
-          <span className="text-base block">ツイート</span>
-        </a>
-      </div>
-      <div className="facebook text-blue-700 text-3xl pr-4">
-        <a href={facebookShare}>
-          <FontAwesomeIcon icon={faFacebook} />
-          <span className="text-base block">シェア</span>
-        </a>
-      </div>
-      <div className="line text-green-600 text-3xl pr-4">
-        <a href={lineShare}>
-          <FontAwesomeIcon icon={faLine} />
-          <span className="text-base block">line</span>
-        </a>
-      </div>
+    <div>
+      <p className="text-center mb-4">SHARE PLEASE !</p>
+      <div className="flex text-center max-w-5xl">
+        <div className="twitter text-blue-600 text-3xl pr-4">
+          <a href={twitterShare} target="_blank">
+            <FontAwesomeIcon icon={faTwitter} />
+            <span className="text-base block">ツイート</span>
+          </a>
+        </div>
+        <div className="facebook text-blue-700 text-3xl pr-4">
+          <a href={facebookShare} target="_blank">
+            <FontAwesomeIcon icon={faFacebook} />
+            <span className="text-base block">シェア</span>
+          </a>
+        </div>
+        <div className="line text-green-600 text-3xl pr-4">
+          <a href={lineShare} target="_blank">
+            <FontAwesomeIcon icon={faLine} />
+            <span className="text-base block">line</span>
+          </a>
+        </div>
+        {/*
       <div className="clipboard text-gray-700 text-3xl">
         <a href={clipBoard}>
           <FontAwesomeIcon icon={faClipboard} />
           <span className="text-base block">コピー</span>
         </a>
+      </div>
+      */}
       </div>
     </div>
   );
