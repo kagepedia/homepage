@@ -16,17 +16,12 @@ module.exports = withPlugins([
       }),
         config.module.rules.push({
           test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/i,
-          use: [
-            {
-              loader: 'image-trace-loader',
+          use: {
+            loader: 'url-loader',
+            options: {
+              limit: 100000,
             },
-            {
-              loader: 'url-loader',
-              options: {
-                limit: 100000,
-              },
-            },
-          ],
+          },
         });
       return config;
     },
