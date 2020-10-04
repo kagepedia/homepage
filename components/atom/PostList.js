@@ -8,7 +8,7 @@ const PostListTop = ({ img_url, img_alt, title, publishDate, discription, slug }
       <Link href={'/posts/' + slug} as={'/posts/' + slug}>
         <a className="md:flex items-center">
           <div className="md:w-2/6">
-            <img src={img_url} alt={img_alt} />
+            <img src={`${img_url}?trace`} alt={img_alt} />
           </div>
           <div className="flex flex-col justify-start p-6">
             <p className="text-sm pb-3">
