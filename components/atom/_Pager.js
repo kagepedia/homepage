@@ -16,7 +16,7 @@ const _Pager = ({ total, page, perPage, href, asCallback }) => {
         <div className="flex text-gray-700">
           {prevPage ? (
             <Link href={href} as={asCallback(prevPage)}>
-              <a className="h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer hover:bg-blue-800 hover:text-white">
+              <a className="h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer hover:bg-blue-800 hover:text-white" aria-label="前のページへ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
@@ -63,7 +63,7 @@ const _Pager = ({ total, page, perPage, href, asCallback }) => {
           </div>
           {nextPage ? (
             <Link href={href} as={asCallback(nextPage)}>
-              <a className="h-12 w-12 ml-1 flex justify-center items-center rounded-full bg-gray-200 hover:bg-blue-800 hover:text-white cursor-pointer">
+              <a className="h-12 w-12 ml-1 flex justify-center items-center rounded-full bg-gray-200 hover:bg-blue-800 hover:text-white cursor-pointer" aria-label="次のページへ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"

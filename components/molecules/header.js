@@ -15,16 +15,16 @@ const Header = () => {
       <nav className="w-full py-4 bg-blue-800 shadow">
         <div className="ml-6">
           <div className="text-white">
-            <a className="" href="https://www.facebook.com/profile.php?id=100034531956446">
+            <a className="" href="https://www.facebook.com/profile.php?id=100034531956446" aria-label="Facebookリンク">
               <FontAwesomeIcon icon={faFacebook} />
             </a>
-            <a className="pl-6" href="https://www.instagram.com/k4gepedia/">
+            <a className="pl-6" href="https://www.instagram.com/k4gepedia/" aria-label="Instagramリンク">
               <FontAwesomeIcon icon={faInstagram} />
             </a>
-            <a className="pl-6" href="https://twitter.com/Luvpys">
+            <a className="pl-6" href="https://twitter.com/Luvpys" aria-label="Twitterリンク">
               <FontAwesomeIcon icon={faTwitter} />
             </a>
-            <a className="pl-6" href="https://www.linkedin.com/in/soichiro-kage/">
+            <a className="pl-6" href="https://www.linkedin.com/in/soichiro-kage/" aria-label="Linkdinリンク">
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
           </div>
@@ -35,7 +35,7 @@ const Header = () => {
           <a className="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="/">
             ひなたぼっこ
           </a>
-          <p className="text-lg text-gray-600">エンジニアのための備忘録</p>
+          <p className="text-lg text-gray-800">エンジニアのための備忘録</p>
         </div>
       </header>
       <nav className="w-full py-4 border-t border-b bg-gray-100">

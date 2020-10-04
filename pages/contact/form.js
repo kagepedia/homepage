@@ -87,34 +87,52 @@ const Form = () => {
         <form onSubmit={handleSubmit}>
           <div className="md:flex mb-6">
             <div className="md:w-1/3">
-              <label htmlFor="name" className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4">
+              <label htmlFor="name" className="block text-gray-800 font-bold md:text-left mb-3 md:mb-0 pr-4">
                 お名前<span className="text-red-600">※</span>
               </label>
             </div>
             <div className="md:w-2/3">
-              <input type="text" maxLength="30" name="name" className="form-input block w-full focus:bg-white" value={form.name} onChange={handleChange} required />
+              <input type="text" maxLength="30" name="name" className="form-input block w-full focus:bg-white" aria-label="入力欄（お名前）" value={form.name} onChange={handleChange} required />
               {errors.errs.name ? <p className="mt-2 text-red-700">{errors.errs.name}</p> : null}
             </div>
           </div>
           <div className="md:flex mb-6">
             <div className="md:w-1/3">
-              <label htmlFor="email" className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4">
+              <label htmlFor="email" className="block text-gray-800 font-bold md:text-left mb-3 md:mb-0 pr-4">
                 メールアドレス<span className="text-red-600">※</span>
               </label>
             </div>
             <div className="md:w-2/3">
-              <input type="email" maxLength="30" name="email" className="form-input block w-full focus:bg-white" value={form.email} onChange={handleChange} required />
+              <input
+                type="email"
+                maxLength="30"
+                name="email"
+                className="form-input block w-full focus:bg-white"
+                aria-label="入力欄（メールアドレス）"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
               {errors.errs.email ? <p className="mt-2 text-red-700">{errors.errs.email}</p> : null}
             </div>
           </div>
           <div className="md:flex mb-6">
             <div className="md:w-1/3">
-              <label htmlFor="contents" className="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4">
+              <label htmlFor="contents" className="block text-gray-800 font-bold md:text-left mb-3 md:mb-0 pr-4">
                 お問い合わせ内容<span className="text-red-600">※</span>
               </label>
             </div>
             <div className="md:w-2/3">
-              <textarea name="contents" className="form-textarea block w-full focus:bg-white" maxLength="200" rows="8" value={form.contents} onChange={handleChange} required></textarea>
+              <textarea
+                name="contents"
+                className="form-textarea block w-full focus:bg-white"
+                maxLength="200"
+                rows="8"
+                aria-label="入力欄（お問い合わせ内容）"
+                value={form.contents}
+                onChange={handleChange}
+                required
+              ></textarea>
               {errors.errs.contents ? <p className="mt-2 text-red-700">{errors.errs.contents}</p> : null}
             </div>
           </div>

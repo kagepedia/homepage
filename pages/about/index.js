@@ -13,7 +13,7 @@ const About = () => (
         <div className="flex flex-wrap justify-center my-6">
           <img className="rounded-full border-solid border-4 border-green-600" src="/img/profile.JPG" alt="プロフィール画像"></img>
         </div>
-        <p className="text-gray-500 text-center">
+        <p className="text-gray-800 text-center">
           WEB制作会社でプログラマーをやっている24歳です。
           <br />
           当ブログでは、自分が技術を通して得た知見を主に発信していきます。
