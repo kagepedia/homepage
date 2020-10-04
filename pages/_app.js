@@ -1,6 +1,7 @@
 import Router from 'next/router';
 import * as gtag from '../utils/gtag';
 import '../public/css/main.css';
+import 'highlight.js/styles/night-owl.css';
 import { useEffect } from 'react';
 
 // fontawesome

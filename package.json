@@ -24,6 +24,7 @@
     "dayjs": "^1.8.36",
     "disqus-react": "^1.0.10",
     "dotenv": "^8.2.0",
+    "highlight.js": "^10.2.1",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^8.0.0",
