@@ -6,12 +6,12 @@ import { faLine } from '@fortawesome/free-brands-svg-icons';
 // import { faClipboard } from '@fortawesome/free-solid-svg-icons';
 
 const ShareBotton = ({ title, slug }) => {
-  // {process.env.BASE_URL} ←を使う
-  const twitterShare = encodeURI(`//twitter.com/share?url=${process.env.BASE_URL}/posts/${slug}/&text=${title}`);
-  const facebookShare = encodeURI(`//www.facebook.com/sharer/sharer.php?u=${process.env.BASE_URL}/posts/${slug}`);
+  const BASE_URL = process.env.BASE_URL;
+  const twitterShare = encodeURI(`//twitter.com/share?url=${BASE_URL}/posts/${slug}/&text=${title}`);
+  const facebookShare = encodeURI(`//www.facebook.com/sharer/sharer.php?u=${BASE_URL}/posts/${slug}`);
   const hatenaShare = encodeURI(`//b.hatena.ne.jp/entry/kagepedia.com/posts/${slug}`);
-  const lineShare = encodeURI(`//line.me/R/msg/text/?${title} ${process.env.BASE_URL}/posts/${slug}`);
-  const clipBoard = `${title} ${process.env.BASE_URL}/posts/${slug}`;
+  const lineShare = encodeURI(`//line.me/R/msg/text/?${title} ${BASE_URL}/posts/${slug}`);
+  const clipBoard = `${title} ${BASE_URL}/posts/${slug}`;
 
   return (
     <div>
