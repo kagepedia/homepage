@@ -15,8 +15,8 @@ module.exports = withPlugins([
         fs: 'empty',
       }),
         config.module.rules.push({
-          test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-          loaders: [
+          test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/i,
+          use: [
             {
               loader: 'image-trace-loader',
             },
