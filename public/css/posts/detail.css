@@ -85,13 +85,13 @@
 }
 
 .table-of-contents {
-  @apply bg-gray-200 border border-solid border-gray-700 px-2 py-2;
+  @apply bg-gray-200 px-2 pr-8 py-2 inline-block;
 }
 
 .table-of-contents ul {
-  @apply p-0;
+  @apply pl-8;
 }
 
 .table-of-contents li {
-  @apply list-none;
+  @apply list-none py-2 border-b-2;
 }

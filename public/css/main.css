@@ -1,5 +1,11 @@
 @tailwind base;
 
+.table-of-contents ul::before {
+  content: '▼目次';
+  font-weight: bold;
+  font-size: 16px;
+}
+
 @tailwind components;
 
 @tailwind utilities;
