@@ -30,7 +30,7 @@ const Detail = ({ post }) => {
     <div>
       <Header />
       <div className="container mx-auto flex flex-wrap py-6">
-        <section className="w-full md:w-2/3 flex flex-col items-center px-3">
+        <section className="w-full lg:w-2/3 lg:flex lg:flex-col items-center px-3">
           {post ? (
             <PostDtail
               img_url={noImage(post).url}
@@ -43,7 +43,7 @@ const Detail = ({ post }) => {
             />
           ) : null}
         </section>
-        <aside className="w-full md:w-1/3 flex flex-col items-center px-3">
+        <aside className="w-full lg:w-1/3 flex flex-col items-center px-2">
           <Profile />
           <SeachForm />
         </aside>
