@@ -39,6 +39,7 @@ const Post = () => {
     // 関数の実行
     async function getPosts(query) {
       setIsLoading(true);
+      if (query === undefined) return;
       const allPosts = await fetchEntriesPost(limit, skip, query);
       const allPostsCounter = await fetchEntriesAllPostCount(query);
       setPosts([...allPosts]);
@@ -47,7 +48,14 @@ const Post = () => {
         setIsLoading(false);
       }, 400);
     }
-    getPosts(query);
+
+    // /postの時
+    if (router.asPath == router.pathname) {
+      getPosts(query);
+      // queryがある時
+    } else {
+      getPosts(query);
+    }
   }, [query]);
 
   const lastPage = Math.ceil(postsCount / limit);
