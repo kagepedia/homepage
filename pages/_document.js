@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { existsGaId, GTM_TRACKING_ID } from '../utils/gtm';
+import { existsAdClientId, AD_CLIENT_ID } from '../utils/gad';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -18,6 +19,9 @@ class MyDocument extends Document {
         <Head>
           {existsGaId ? (
             <script dangerouslySetInnerHTML={{ __html: gtmScript }} />
+          ) : null}
+          {existsAdClientId ? (
+            <script data-ad-client={`${AD_CLIENT_ID}`} async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           ) : null}
         </Head>
         <body>

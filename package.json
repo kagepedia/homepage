@@ -47,6 +47,7 @@
     "next-optimized-images": "^2.6.2",
     "node-fetch": "^2.6.1",
     "react": "^16.13.1",
+    "react-adsense": "^0.1.0",
     "react-chartjs-2": "^2.10.0",
     "react-dom": "^16.13.1"
   },
