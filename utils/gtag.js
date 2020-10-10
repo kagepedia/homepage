@@ -1,3 +1,4 @@
+/*
 const GA_ID = process.env.GOOGLE_ANALYTICS_ID;
 
 // IDが取得できない場合を想定する
@@ -24,3 +25,4 @@ export const event = ({ action, category, label, value = '' }) => {
     value,
   });
 };
+*/
