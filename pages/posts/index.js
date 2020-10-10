@@ -17,6 +17,9 @@ import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 // _Pager
 import _Pager from '../../components/atom/_Pager';
 
+// query
+import queryString from 'query-string';
+
 // default setting
 const page = 1;
 const limit = 5;
@@ -28,7 +31,8 @@ const Post = () => {
   const [postsCount, setPostsCount] = useState(0);
   const [query, setQuesy] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { q } = router.query;
+  const q = queryString.parse(router.asPath.split(/\?/)[1])['q'];
+  // const { q } = router.query;
 
   useEffect(() => {
     // queryが利用可能になったら処理される
@@ -53,7 +57,7 @@ const Post = () => {
     if (router.asPath == router.pathname) {
       getPosts(query);
       // queryがある時
-    } else {
+    } else if (q === query) {
       getPosts(query);
     }
   }, [query]);

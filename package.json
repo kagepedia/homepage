@@ -46,6 +46,7 @@
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.6.2",
     "node-fetch": "^2.6.1",
+    "query-string": "^6.13.5",
     "react": "^16.13.1",
     "react-adsense": "^0.1.0",
     "react-chartjs-2": "^2.10.0",
