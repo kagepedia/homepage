@@ -19,7 +19,6 @@ export async function fetchEntriesTop() {
 
 // Get Contents for Post Page
 export async function fetchEntriesPost(limit, skip, query) {
-  console.log('fetchEntriesPost' + query + 'aaaaa');
   const entries = await client.getEntries({
     content_type: process.env.CTF_BLOG_POST_TYPE_ID,
     limit,
@@ -33,7 +32,6 @@ export async function fetchEntriesPost(limit, skip, query) {
 
 // PostCounter
 export async function fetchEntriesAllPostCount(query) {
-  console.log('fetchEntriesAllPostCount' + query + 'bbbbb');
   const entries = await client.getEntries({
     content_type: process.env.CTF_BLOG_POST_TYPE_ID,
     order: '-fields.publishDate',
